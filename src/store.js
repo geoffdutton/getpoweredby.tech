@@ -29,7 +29,14 @@ export default new Vuex.Store({
   getters: {
     isAuthenticated: state => !!state.token,
     authStatus: state => state.status,
-    getAthlete: state => state.athlete
+    getAthlete: state => {
+      const a = state.athlete
+      console.info(a)
+      if (typeof a === 'string') {
+        return JSON.parse(a)
+      }
+      return a
+    }
   },
   state: {
     token: localStorage.getItem(USER_TOKEN_KEY) || '',
@@ -75,7 +82,7 @@ export default new Vuex.Store({
               return setTimeout(() => {
                 window.location = resp.data.redirect_url
                 resolve(resp)
-              }, 2000)
+              }, 278)
             }
             const token = resp.data.access_token
             if (!token) {

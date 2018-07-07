@@ -1,5 +1,6 @@
 <template>
     <section class="home">
+        <Profile :athlete=getAthlete />
         <pre v-if=getAthlete class="user">{{ JSON.stringify(getAthlete, null, 2) }}</pre>
         <HelloWorld msg="Welcome to GetPoweredBy.Tech"/>
     </section>
@@ -9,6 +10,7 @@
   import { mapGetters } from 'vuex'
   // @ is an alias to /src
   import HelloWorld from '@/components/HelloWorld.vue'
+  import Profile from '@/components/Profile.vue'
 
   export default {
     name: 'home',
@@ -16,7 +18,8 @@
       ...mapGetters(['getAthlete'])
     },
     components: {
-      HelloWorld
+      HelloWorld,
+      Profile
     }
   }
 </script>
