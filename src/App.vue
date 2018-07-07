@@ -1,19 +1,33 @@
 <template>
-    <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/about">About</router-link>
+    <div id="app" class="container">
+        <div class="column is-three-fifths is-offset-one-fifth">
+            <img src="./assets/splash-logo.jpg">
         </div>
-        <router-view/>
+        <div class="column is-three-fifths is-offset-one-fifth">
+            <div id="nav">
+                <router-link to="/">Home</router-link>
+                |
+                <router-link v-if=!isAuthenticated to="/auth">Login</router-link>
+                <router-link v-if=isAuthenticated to="/logout">Logout</router-link>
+            </div>
+            <router-view/>
+        </div>
     </div>
 </template>
+
+<script>
+  export default {
+    computed: {
+      isAuthenticated () {
+        return this.$store.getters.isAuthenticated
+      }
+    }
+  }
+</script>
 
 <style>
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
     }
