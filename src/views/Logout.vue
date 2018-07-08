@@ -13,7 +13,7 @@
     name: 'logout',
     created () {
       return this.$store.dispatch(AUTH_LOGOUT)
-        //.then(() => this.$router.push('/auth'))
+        .then(() => this.$router.push('/auth'))
     }
   }
 </script>
