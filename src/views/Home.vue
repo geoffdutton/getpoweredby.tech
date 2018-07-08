@@ -1,7 +1,9 @@
 <template>
     <section class="home">
-        <Profile :athlete=getAthlete />
-        <pre v-if=getAthlete class="user">{{ JSON.stringify(getAthlete, null, 2) }}</pre>
+        <div v-if=getAthlete>
+            <Profile :athlete=getAthlete />
+            <pre class="user">{{ JSON.stringify(getAthlete, null, 2) }}</pre>
+        </div>
         <HelloWorld msg="Welcome to GetPoweredBy.Tech"/>
     </section>
 </template>

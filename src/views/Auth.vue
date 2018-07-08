@@ -21,7 +21,7 @@
   import {
     AUTH_REQUEST,
     AUTH_LOGOUT
-  } from '../store'
+  } from '../store/mutationTypes'
 
   export default {
     name: 'auth',

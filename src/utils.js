@@ -3,6 +3,9 @@ module.exports = {
     if (typeof obj === 'undefined') {
       return ''
     }
-    return encodeURIComponent(btoa(JSON.stringify(obj)))
+    return encodeURIComponent(window.btoa(JSON.stringify(obj)))
+  },
+  redirect (url) {
+    window.location = url
   }
 }
