@@ -59,6 +59,7 @@ describe('store/actions', () => {
         expect(actionSpies.commit).toHaveBeenCalledWith(AUTH_SUCCESS, { token, athlete: ath })
         expect(window.localStorage.setItem).toHaveBeenCalledWith(STORE_KEYS.TOKEN, token)
         expect(window.localStorage.setItem).toHaveBeenCalledWith(STORE_KEYS.ATHLETE, JSON.stringify(ath))
+        expect(axios.defaults.headers.common['Authorization']).toBe(token)
       })
     })
   })

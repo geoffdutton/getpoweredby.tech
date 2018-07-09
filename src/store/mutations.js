@@ -1,9 +1,13 @@
-import { AUTH_ERROR, AUTH_LOGOUT, AUTH_REDIRECT, AUTH_REQUEST, AUTH_SUCCESS } from './mutationTypes'
+import {
+  ACTIVITIES_SUCCESS,
+  API_ERROR, API_REQUEST,
+  AUTH_LOGOUT,
+  AUTH_REDIRECT,
+  AUTH_SUCCESS,
+  ME_SUCCESS
+} from './mutationTypes'
 
 export default {
-  [AUTH_REQUEST]: state => {
-    state.status = 'loading'
-  },
   [AUTH_REDIRECT]: state => {
     state.status = 'redirecting'
   },
@@ -18,8 +22,25 @@ export default {
     state.status = ''
     state.token = ''
     state.athlete = {}
+    state.apiError = null
   },
-  [AUTH_ERROR]: state => {
+
+  [ACTIVITIES_SUCCESS]: (state, payload) => {
+    state.status = 'success'
+    state.activities = [...state.activities, ...payload]
+  },
+
+  [ME_SUCCESS]: (state, payload) => {
+    state.status = 'success'
+    Object.assign(state.athlete, payload)
+  },
+
+  [API_ERROR]: (state, payload) => {
     state.status = 'error'
+    state.apiError = payload
+  },
+  [API_REQUEST]: state => {
+    state.status = 'loading'
+    state.apiError = null
   }
 }

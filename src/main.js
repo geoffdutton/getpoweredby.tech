@@ -1,13 +1,14 @@
 import Vue from 'vue'
-import vueBulmaComponents from 'vue-bulma-components'
+import Buefy from 'buefy'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
-require('bulma/css/bulma.css')
+require('./filters').default(Vue)
+require('buefy/lib/buefy.css')
 
 Vue.config.productionTip = false
-Vue.use(vueBulmaComponents)
+Vue.use(Buefy)
 
 new Vue({
   router,

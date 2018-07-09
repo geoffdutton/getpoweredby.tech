@@ -2,4 +2,12 @@ export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_REDIRECT = 'AUTH_REDIRECT'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
-export const AUTH_ERROR = 'AUTH_ERROR'
+
+export const ME_REQUEST = 'ME_REQUEST'
+export const ME_SUCCESS = 'ME_SUCCESS'
+
+export const ACTIVITIES_REQUEST = 'ACTIVITIES_REQUEST'
+export const ACTIVITIES_SUCCESS = 'ACTIVITIES_SUCCESS'
+
+export const API_ERROR = 'API_ERROR'
+export const API_REQUEST = 'API_REQUEST'

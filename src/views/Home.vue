@@ -1,26 +1,26 @@
 <template>
-    <section class="home">
-        <div v-if=getAthlete>
-            <Profile :athlete=getAthlete />
-            <pre class="user">{{ JSON.stringify(getAthlete, null, 2) }}</pre>
+    <div class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="profile" v-if=getAthlete>
+                    <Profile :athlete=getAthlete :activities=getActivities />
+                </div>
+            </div>
         </div>
-        <HelloWorld msg="Welcome to GetPoweredBy.Tech"/>
-    </section>
+    </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
   // @ is an alias to /src
-  import HelloWorld from '@/components/HelloWorld.vue'
   import Profile from '@/components/Profile.vue'
 
   export default {
     name: 'home',
     computed: {
-      ...mapGetters(['getAthlete'])
+      ...mapGetters(['getAthlete', 'getActivities'])
     },
     components: {
-      HelloWorld,
       Profile
     }
   }

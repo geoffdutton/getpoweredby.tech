@@ -1,5 +1,13 @@
 import mutations from '../mutations'
-import { AUTH_ERROR, AUTH_LOGOUT, AUTH_REDIRECT, AUTH_REQUEST, AUTH_SUCCESS } from '../mutationTypes'
+import {
+  API_ERROR,
+  API_REQUEST,
+  AUTH_ERROR,
+  AUTH_LOGOUT,
+  AUTH_REDIRECT,
+  AUTH_REQUEST,
+  AUTH_SUCCESS
+} from '../mutationTypes'
 
 describe('store/mutations', () => {
   let state
@@ -7,21 +15,26 @@ describe('store/mutations', () => {
     state = {
       token: '',
       status: 'loading',
-      athlete: {}
+      athlete: {},
+      apiError: null,
+      activities: []
     }
   })
 
   ;[
-    [AUTH_REQUEST, 'loading'],
-    [AUTH_ERROR, 'error'],
+    [API_REQUEST, 'loading'],
+    [API_ERROR, 'error'],
     [AUTH_REDIRECT, 'redirecting']
   ].forEach(([mutType, expStatus]) => {
     test(mutType, () => {
-      mutations[mutType](state)
+      const e = mutType === AUTH_ERROR ? 'some-error' : null
+      mutations[mutType](state, e)
       expect(state).toEqual({
         token: '',
         status: expStatus,
-        athlete: {}
+        athlete: {},
+        apiError: e,
+        activities: []
       })
     })
   })
@@ -35,7 +48,9 @@ describe('store/mutations', () => {
     expect(state).toEqual({
       token: '123',
       status: 'success',
-      athlete: { id: 123, name: 'jon' }
+      athlete: { id: 123, name: 'jon' },
+      apiError: null,
+      activities: []
     })
   })
 
@@ -44,7 +59,9 @@ describe('store/mutations', () => {
     expect(state).toEqual({
       token: '123',
       status: 'success',
-      athlete: {}
+      athlete: {},
+      apiError: null,
+      activities: []
     })
   })
 
@@ -56,7 +73,9 @@ describe('store/mutations', () => {
     expect(state).toEqual({
       token: '',
       status: '',
-      athlete: {}
+      athlete: {},
+      apiError: null,
+      activities: []
     })
   })
 })

@@ -1,3 +1,6 @@
+const Vue = require('vue')
+require('./src/filters').default(Vue)
+
 if (!process.env.__JEST_UNHANDLED_REJECTED_SET) {
   process.env.__JEST_UNHANDLED_REJECTED_SET = 'true'
   process.on('unhandledRejection', error => {
@@ -10,5 +13,5 @@ process.env.VUE_APP_API_ENDPOINT = 'test-api.endpoint'
 
 require('jest-localstorage-mock')
 
-const utils = require('./src/utils')
+const utils = require('./src/utils').default
 utils.redirect = jest.fn()
