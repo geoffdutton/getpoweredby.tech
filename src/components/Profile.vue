@@ -1,21 +1,24 @@
 <template>
     <div>
-        <div class="columns" v-bind:class="{
-        premium: athlete.premium,
-        profile: !athlete.premium
-    }">
-            <div class="column is-narrow">
-                <img class="square-img" v-bind:src="athlete.profile">
-                <button class="button" @click="refreshAthlete">
-                    Refresh
-                </button>
-            </div>
-            <div class="column">
-                <ul>
-                    <li><label>Name:</label> {{ athlete.firstname }} {{ athlete.lastname }}</li>
-                    <li><label>State:</label> {{ athlete.state || '--' }}</li>
-                    <li><label>Sex:</label> Still Exploring</li>
-                </ul>
+        <div class="box" v-bind:class="{
+            premium: athlete.premium,
+            profile: !athlete.premium
+        }">
+            <div class="columns">
+                <div class="column is-narrow">
+                    <img class="square-img" v-bind:src="athlete.profile">
+                    <br>
+                    <button class="button" @click="refreshAthlete">
+                        Refresh
+                    </button>
+                </div>
+                <div class="column">
+                    <ul>
+                        <li><label>Name:</label> {{ athlete.firstname }} {{ athlete.lastname }}</li>
+                        <li><label>State:</label> {{ athlete.state || '--' }}</li>
+                        <li><label>Sex:</label> Still Exploring</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="tile is-ancestor">
@@ -36,25 +39,17 @@
                     </div>
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Activities Response</p>
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Distance</th>
-                                    <th>Avg Heartrate</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="activity in activities">
-                                    <td><Activity
-                                        name="activity.name"
-                                        distance="activity.distance"
-                                        moving-time="activity.movingTime"
-                                    /></td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <p class="title">Activities ({{ activities.length }})</p>
+                            <ul>
+                                <li v-for="activity in activities">
+                                    <Activity v-for="activity in activities"
+                                              :key="'activity-id-' + activity.id"
+                                              :name="activity.name"
+                                              :distance="activity.distance"
+                                              :moving-time=activity.movingTime
+                                    />
+                                </li>
+                            </ul>
                         </article>
                     </div>
                 </div>
@@ -65,7 +60,7 @@
 </template>
 
 <script>
-    import Activity from './Activity'
+  import Activity from './Activity'
   import { ME_REQUEST, ACTIVITIES_REQUEST } from '../store/mutationTypes'
 
   export default {
@@ -103,16 +98,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .premium {
-        border: 1px solid red;
-    }
-
     .square-img {
         max-width: 100px;
-    }
-
-    .profile {
-        border: 1px solid grey;
     }
 
     .user {

@@ -58,7 +58,7 @@ export default {
         }
         commit(AUTH_SUCCESS, { token, athlete })
         // you have your token, now log in your user :)
-        // dispatch(USER_REQUEST)
+        dispatch(ME_REQUEST)
         return resp
       })
       .catch(err => {
@@ -105,7 +105,7 @@ export default {
     })
       .then(resp => {
         // the api endpoint needs to be changed to normalize the response
-        const data = resp.data.body || resp.data
+        const data = utils.camelCaseObjectKeys(resp.data.body || resp.data)
 
         commit(ACTIVITIES_SUCCESS, data)
         return data

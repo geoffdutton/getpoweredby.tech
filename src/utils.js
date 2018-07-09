@@ -69,5 +69,8 @@ export default {
     }
 
     return `${hourStr}${padTwoZeros(minutes)}m`
+  },
+  filterMetersToMiles (meters) {
+    return Math.round(meters * 0.00062137 * 100) / 100
   }
 }

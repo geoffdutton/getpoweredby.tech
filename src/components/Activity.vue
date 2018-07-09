@@ -1,7 +1,7 @@
 <template>
  <div class="box">
      <p class="title">{{ name }}</p>
-     <p class="subtitle">Distance: {{ distance }}</p>
+     <p class="subtitle">Distance: {{ distance | metersToMiles }} miles</p>
      <p>Time: {{ movingTime | secondsToHuman }}</p>
  </div>
 </template>

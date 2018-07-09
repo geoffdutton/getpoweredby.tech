@@ -1,3 +1,4 @@
+import utils from '../utils'
 import {
   ACTIVITIES_SUCCESS,
   API_ERROR, API_REQUEST,
