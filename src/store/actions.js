@@ -17,7 +17,7 @@ const localStorage = window.localStorage
 const logout = () => {
   Object.keys(STORE_KEYS).forEach(k => localStorage.removeItem(STORE_KEYS[k]))
   // remove the axios default header
-  delete axios.defaults.headers.common['Authorization']
+  delete axios.defaults.headers.common['X-Strava-Auth']
 }
 
 export default {
@@ -46,7 +46,7 @@ export default {
           throw new Error(`Invalid token response: ${token}`)
         }
 
-        axios.defaults.headers.common['Authorization'] = token
+        axios.defaults.headers.common['X-Strava-Auth'] = token
 
         const athlete = data.athlete && utils.camelCaseObjectKeys(data.athlete)
         console.log(`[AUTH_SUCCESS] resp.data:`, resp.data)
@@ -58,7 +58,7 @@ export default {
         }
         commit(AUTH_SUCCESS, { token, athlete })
         // you have your token, now log in your user :)
-        dispatch(ME_REQUEST)
+        dispatch(ME_SUCCESS, athlete)
         return resp
       })
       .catch(err => {

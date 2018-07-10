@@ -12,7 +12,7 @@ const localStorage = window.localStorage
 
 const accessToken = localStorage.getItem(STORE_KEYS.TOKEN)
 if (accessToken) {
-  axios.defaults.headers.common['Authorization'] = accessToken
+  axios.defaults.headers.common['X-Strava-Auth'] = accessToken
 }
 
 export default new Vuex.Store({

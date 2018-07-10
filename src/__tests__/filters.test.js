@@ -10,8 +10,9 @@ describe('filter setup', () => {
 
   it('adds filters defined in utils.js', () => {
     filters({ filter: VueFilter })
-    expect(VueFilter).toHaveBeenCalledTimes(1)
+    expect(VueFilter).toHaveBeenCalledTimes(2)
     expect(VueFilter).toHaveBeenCalledWith('secondsToHuman', utils.filterSecondsToHuman)
+    expect(VueFilter).toHaveBeenCalledWith('metersToMiles', utils.filterMetersToMiles)
   })
 
   it('converts seconds to something readable', () => {
