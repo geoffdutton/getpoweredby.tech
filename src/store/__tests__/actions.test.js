@@ -2,7 +2,7 @@ import utils from '../../utils'
 import actions from '../actions'
 import { STORE_KEYS } from '../constants'
 import {
-  AUTH_LOGOUT, AUTH_REDIRECT, AUTH_REQUEST, AUTH_SUCCESS
+  AUTH_LOGOUT, AUTH_REDIRECT, AUTH_REQUEST, AUTH_SUCCESS, ME_REQUEST
 } from '../mutationTypes'
 import axios from 'axios'
 jest.mock('axios')
@@ -39,6 +39,7 @@ describe('store/actions', () => {
         })
         expect(utils.redirect).toHaveBeenCalledWith(stravaRedirectUrl)
         expect(actionSpies.commit).toHaveBeenCalledWith(AUTH_REDIRECT)
+        expect(actionSpies.dispatch).not.toHaveBeenCalled()
         expect(window.localStorage.setItem).not.toHaveBeenCalled()
       })
 
@@ -57,6 +58,7 @@ describe('store/actions', () => {
         })
         expect(utils.redirect).not.toHaveBeenCalled()
         expect(actionSpies.commit).toHaveBeenCalledWith(AUTH_SUCCESS, { token, athlete: ath })
+        expect(actionSpies.dispatch).toHaveBeenCalledWith(ME_REQUEST)
         expect(window.localStorage.setItem).toHaveBeenCalledWith(STORE_KEYS.TOKEN, token)
         expect(window.localStorage.setItem).toHaveBeenCalledWith(STORE_KEYS.ATHLETE, JSON.stringify(ath))
         expect(axios.defaults.headers.common['X-Strava-Auth']).toBe(token)

@@ -19,6 +19,10 @@ function padTwoZeros (str) {
 }
 
 function camelCaseObjectKeys (obj) {
+  if (!obj) {
+    return obj
+  }
+
   if (Array.isArray(obj)) {
     return obj.map(camelCaseObjectKeys)
   }

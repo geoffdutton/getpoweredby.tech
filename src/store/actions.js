@@ -58,7 +58,7 @@ export default {
         }
         commit(AUTH_SUCCESS, { token, athlete })
         // you have your token, now log in your user :)
-        dispatch(ME_SUCCESS, athlete)
+        dispatch(ME_REQUEST)
         return resp
       })
       .catch(err => {
@@ -75,7 +75,7 @@ export default {
     })
   },
 
-  [ME_REQUEST]: ({ commit, dispatch }) => {
+  [ME_REQUEST]: ({ commit }) => {
     commit(API_REQUEST)
     let url = '/me/'
 
@@ -84,9 +84,12 @@ export default {
     })
       .then(resp => {
         // the api endpoint needs to be changed to normalize the response
-        const data = resp.data.body || resp.data
+        const data = utils.camelCaseObjectKeys(resp.data.body || resp.data)
 
         console.log(`[ME_SUCCESS] data:`, data)
+        if (data) {
+          localStorage.setItem(STORE_KEYS.FULL_ATHLETE, JSON.stringify(data))
+        }
 
         commit(ME_SUCCESS, data)
         return data
@@ -96,8 +99,8 @@ export default {
       })
   },
 
-  [ACTIVITIES_REQUEST]: ({ commit, dispatch }) => {
-    commit(API_REQUEST)
+  [ACTIVITIES_REQUEST]: ({ commit }) => {
+    commit(ACTIVITIES_REQUEST)
     let url = '/activities/'
 
     return axios({
@@ -106,6 +109,9 @@ export default {
       .then(resp => {
         // the api endpoint needs to be changed to normalize the response
         const data = utils.camelCaseObjectKeys(resp.data.body || resp.data)
+        if (data) {
+          localStorage.setItem(STORE_KEYS.ACTIVITIES, JSON.stringify(data))
+        }
 
         commit(ACTIVITIES_SUCCESS, data)
         return data

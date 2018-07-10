@@ -1,5 +1,5 @@
-import utils from '../utils'
 import {
+  ACTIVITIES_REQUEST,
   ACTIVITIES_SUCCESS,
   API_ERROR, API_REQUEST,
   AUTH_LOGOUT,
@@ -23,9 +23,15 @@ export default {
     state.status = ''
     state.token = ''
     state.athlete = {}
+    state.fullAthlete = {}
     state.apiError = null
   },
 
+  [ACTIVITIES_REQUEST]: state => {
+    state.activities = []
+    state.status = 'loading'
+    state.apiError = null
+  },
   [ACTIVITIES_SUCCESS]: (state, payload) => {
     state.status = 'success'
     state.activities = [...state.activities, ...payload]
@@ -33,7 +39,7 @@ export default {
 
   [ME_SUCCESS]: (state, payload) => {
     state.status = 'success'
-    Object.assign(state.athlete, payload)
+    Object.assign(state.fullAthlete, payload)
   },
 
   [API_ERROR]: (state, payload) => {

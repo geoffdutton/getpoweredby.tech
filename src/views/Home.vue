@@ -3,7 +3,7 @@
         <div class="hero-body">
             <div class="container">
                 <div class="profile" v-if=getAthlete>
-                    <Profile :athlete=getAthlete :activities=getActivities />
+                    <Profile :athlete=getAthlete :activities=getLimitedActivities />
                 </div>
             </div>
         </div>
@@ -18,7 +18,10 @@
   export default {
     name: 'home',
     computed: {
-      ...mapGetters(['getAthlete', 'getActivities'])
+      ...mapGetters(['getAthlete', 'getActivities']),
+      getLimitedActivities () {
+        return this.getActivities.slice(0, 10)
+      }
     },
     components: {
       Profile

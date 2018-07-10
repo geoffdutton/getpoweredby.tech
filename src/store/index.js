@@ -29,13 +29,26 @@ export default new Vuex.Store({
       }
       return a
     },
-    getActivities: state => state.activities
+    getActivities: state => state.activities,
+    getAverageWattsPerKilogram: state => {
+      if (state.activities.length === 0) {
+        return 0
+      }
+      return state.activities.reduce((all, act) => {
+        if (act.averageWatts) {
+          all += act.averageWatts
+        }
+        return all
+      }, 0) / state.activities.length / state.fullAthlete.weight
+    },
+    getAllRideTotals: state => state.fullAthlete.stats.allRideTotals
   },
   state: {
     token: localStorage.getItem(STORE_KEYS.TOKEN) || '',
     status: '',
     athlete: utils.camelCaseObjectKeys(JSON.parse(localStorage.getItem(STORE_KEYS.ATHLETE) || '{}')),
-    activities: [],
+    fullAthlete: utils.camelCaseObjectKeys(JSON.parse(localStorage.getItem(STORE_KEYS.FULL_ATHLETE) || '{}')),
+    activities: utils.camelCaseObjectKeys(JSON.parse(localStorage.getItem(STORE_KEYS.ACTIVITIES) || '[]')),
     apiError: null
   },
   mutations,

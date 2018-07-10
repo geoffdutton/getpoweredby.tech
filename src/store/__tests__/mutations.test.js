@@ -1,11 +1,11 @@
 import mutations from '../mutations'
 import {
+  ACTIVITIES_REQUEST, ACTIVITIES_SUCCESS,
   API_ERROR,
   API_REQUEST,
   AUTH_ERROR,
   AUTH_LOGOUT,
   AUTH_REDIRECT,
-  AUTH_REQUEST,
   AUTH_SUCCESS
 } from '../mutationTypes'
 
@@ -74,8 +74,23 @@ describe('store/mutations', () => {
       token: '',
       status: '',
       athlete: {},
+      fullAthlete: {},
       apiError: null,
       activities: []
     })
+  })
+
+  it('clears current activities', () => {
+    state.activities = ['something']
+    mutations[ACTIVITIES_REQUEST](state)
+    expect(state.activities).toEqual([])
+  })
+
+  it('merges existing activities on success', () => {
+    const data = ['newdata']
+    state.activities = ['something']
+    mutations[ACTIVITIES_SUCCESS](state, data)
+    expect(state.status).toBe('success')
+    expect(state.activities).toEqual(['something', 'newdata'])
   })
 })
