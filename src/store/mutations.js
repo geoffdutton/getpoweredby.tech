@@ -39,7 +39,7 @@ export default {
 
   [ME_SUCCESS]: (state, payload) => {
     state.status = 'success'
-    Object.assign(state.fullAthlete, payload)
+    state.fullAthlete = { ...state.fullAthlete, ...payload }
   },
 
   [API_ERROR]: (state, payload) => {

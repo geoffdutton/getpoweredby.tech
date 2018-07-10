@@ -41,7 +41,7 @@ export default new Vuex.Store({
         return all
       }, 0) / state.activities.length / state.fullAthlete.weight
     },
-    getAllRideTotals: state => state.fullAthlete.stats.allRideTotals
+    getAllRideTotals: state => state.fullAthlete && state.fullAthlete.stats && state.fullAthlete.stats.allRideTotals
   },
   state: {
     token: localStorage.getItem(STORE_KEYS.TOKEN) || '',
