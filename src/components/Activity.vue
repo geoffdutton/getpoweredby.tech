@@ -6,9 +6,7 @@
                 <p class="subtitle">Distance: {{ distance | metersToMiles }} miles</p>
                 <p>Time: {{ movingTime | secondsToHuman }}</p>
             </div>
-            <div class="column geo-plot">
-
-            </div>
+            <div class="column geo-plot"></div>
         </div>
     </div>
 </template>
@@ -34,8 +32,8 @@
         return
       }
 
-      const height = 300
-      const width = 600
+      const height = 250
+      const width = 250
       const projection = d3.geoMercator()
       projection.scale(1000)
 
@@ -64,7 +62,9 @@
         .append('svg')
         .attr('height', height)
         .attr('width', width)
-        // .style('border', '1px solid black')
+        // .attr('viewBox', `0 0 ${height} ${width}`)
+        // .attr('preserveAspectRatio', 'xMinYMin meet')
+
 
       svg.append('path')
         .attr('class', 'line')
