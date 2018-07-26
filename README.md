@@ -1,5 +1,10 @@
 # Vue + Strava
 
+[![Build Status](https://travis-ci.org/geoffdutton/getpoweredby.tech.svg?branch=master)](https://travis-ci.org/geoffdutton/getpoweredby.tech)
+[![Coverage Status](https://coveralls.io/repos/github/geoffdutton/getpoweredby.tech/badge.svg?branch=master)](https://coveralls.io/github/geoffdutton/getpoweredby.tech?branch=master)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+
 This is my attempt at using Vue and the Strava api to display some visualizations and authentication.
 
 I don't have a clear goal, but maybe someone will find something useful.

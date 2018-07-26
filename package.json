@@ -9,6 +9,7 @@
     "test": "vue-cli-service test:unit --coverage",
     "tdd": "vue-cli-service test:unit --watch"
   },
+  "repository": "git@github.com:geoffdutton/getpoweredby.tech.git",
   "dependencies": {
     "@mapbox/polyline": "^1.0.0",
     "axios": "^0.18.0",
