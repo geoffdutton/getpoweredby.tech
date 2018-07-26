@@ -15,7 +15,7 @@
                 <div class="column is-narrow">
                     <ul>
                         <li><label>Name:</label> {{ athlete.firstname }} {{ athlete.lastname }}</li>
-                        <li><label>Sex:</label> Still Exploring</li>
+                        <li><label>Sex:</label> {{ athlete.sex }}</li>
                     </ul>
                 </div>
                 <div class="column">
