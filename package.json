@@ -7,7 +7,8 @@
     "serve": "vue-cli-service serve",
     "build": "NODE_ENV=production vue-cli-service build",
     "test": "vue-cli-service test:unit --coverage",
-    "tdd": "vue-cli-service test:unit --watch"
+    "tdd": "vue-cli-service test:unit --watch",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": "git@github.com:geoffdutton/getpoweredby.tech.git",
   "dependencies": {
@@ -26,6 +27,7 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "coveralls": "^3.0.2",
     "jest-localstorage-mock": "^2.2.0",
     "standard": "^11.0.1",
     "vue-template-compiler": "^2.5.16"
