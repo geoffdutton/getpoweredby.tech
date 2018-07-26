@@ -34,4 +34,4 @@ There are a number of options for deploying to a live a site. I am currently usi
 You could also simply upload to S3.
 
 ## License
-Just your run-of-the-mill [MIT](
+Just your run-of-the-mill [MIT](https://opensource.org/licenses/MIT).
