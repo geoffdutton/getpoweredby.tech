@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/geoffdutton/getpoweredby.tech.svg?branch=master)](https://travis-ci.org/geoffdutton/getpoweredby.tech)
 [![Coverage Status](https://coveralls.io/repos/github/geoffdutton/getpoweredby.tech/badge.svg?branch=master)](https://coveralls.io/github/geoffdutton/getpoweredby.tech?branch=master)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![dependencies Status](https://david-dm.org/geoffdutton/getpoweredby.tech/status.svg)](https://david-dm.org/geoffdutton/getpoweredby.tech)
+[![dependencies Status](https://david-dm.org/geoffdutton/getpoweredby.tech/status.svg)](https://david-dm.org/geoffdutton/getpoweredby.tech) [![Greenkeeper badge](https://badges.greenkeeper.io/geoffdutton/getpoweredby.tech.svg)](https://greenkeeper.io/)
 
 
 This is my attempt at using Vue and the Strava api to display some visualizations and authentication.
