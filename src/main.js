@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
 require('./filters').default(Vue)
-require('buefy/lib/buefy.css')
 
 Vue.config.productionTip = false
 Vue.use(Buefy)

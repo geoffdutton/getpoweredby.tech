@@ -12,25 +12,25 @@
   },
   "repository": "git@github.com:geoffdutton/getpoweredby.tech.git",
   "dependencies": {
-    "@mapbox/polyline": "^1.0.0",
-    "axios": "^0.18.0",
-    "buefy": "^0.6.6",
-    "d3": "^5.5.0",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "@mapbox/polyline": "^1.1.1",
+    "axios": "^0.27.2",
+    "buefy": "^0.9.21",
+    "d3": "5",
+    "vue": "2",
+    "vue-router": "3",
+    "vuex": "3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/test-utils": "^1.0.0-beta.20",
+    "@vue/cli-plugin-babel": "3",
+    "@vue/cli-plugin-unit-jest": "3",
+    "@vue/cli-service": "3",
+    "@vue/test-utils": "^1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "coveralls": "^3.0.2",
-    "jest-localstorage-mock": "^2.2.0",
-    "standard": "^11.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "babel-jest": "^28.1.3",
+    "coveralls": "^3.1.1",
+    "jest-localstorage-mock": "^2.4.21",
+    "standard": "^17.0.0",
+    "vue-template-compiler": "^2.7.5"
   },
   "browserslist": [
     "> 1%",
